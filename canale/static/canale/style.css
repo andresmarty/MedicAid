@@ -1,0 +1,22 @@
+html {
+  height: 100%;
+}
+html body {
+  height: 100%;
+}
+
+div div ul li {
+  list-style: none;
+  margin-left: 0;
+}
+div div form .input {
+  width: 50%;
+}
+div div form button {
+  margin-top: 10px;
+}
+div div form .select {
+  width: 20%;
+}
+
+/*# sourceMappingURL=style.css.map */
