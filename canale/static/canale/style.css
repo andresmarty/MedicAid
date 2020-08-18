@@ -5,6 +5,11 @@ html body {
   height: 100%;
 }
 
+div div aside nav div ul .name {
+  font-weight: 500;
+  font-size: large;
+}
+
 div div ul li {
   list-style: none;
   margin-left: 0;
@@ -13,10 +18,11 @@ div div form .input {
   width: 50%;
 }
 div div form button {
-  margin-top: 10px;
+  margin-top: 5px;
 }
 div div form .select {
-  width: 20%;
+  width: 10%;
+  margin-top: 5px;
 }
 
 /*# sourceMappingURL=style.css.map */

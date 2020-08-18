@@ -1,0 +1,24 @@
+{% extends "canale/layout.html" %}
+
+{% block body %}
+
+<div class="col-10 col-md-10 container-fluid h-100">
+    {% if messages %}
+    <ul class="messages">
+        {% for msg in messages %}       
+        <li>
+            <div class="alert alert-{{msg.level_tag}}" role="alert">
+            {{msg.message}}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form autocomplete="off" action="" method="POST" class="form-group">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn btn-secondary button">Agregar Practica</button>
+    </form>
+</div>
+
+{% endblock %}

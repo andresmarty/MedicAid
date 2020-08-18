@@ -1,67 +1,25 @@
-{% load static %}
+{% extends "canale/layout.html" %}
 
-<!doctype html>
-<html lang="en">
+{% block body %}
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <!-- Styles -->
-    <link href="{% static 'canale/style.css' %}" rel="stylesheet">
-
-    <!-- Google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap" rel="stylesheet">
-
-    <!-- Ionic icons -->
-    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
-
-    <title>Canale</title>
-</head>
-
-  <body>
-        <!-- Sidebar -->
-        <div class="container-fluid h-100">
-          <div class="row h-100">
-              <aside class="col-2 col-md-2 p-0 bg-dark">
-                  <nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start">
-                      <div class="collapse navbar-collapse">
-                          <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
-                              <li class="nav-item">
-                                  <a class="nav-link pl-0" href="#">Miguel Martynowicz</a>
-                              </li>
-                              <li>
-                                <a class="nav-link pl-0" href="#">Reportes</a>
-                              </li>
-                          </ul>
-                      </div>
-                  </nav>
-              </aside>
-          <!-- Body -->
-              <div class="col-10 col-md-10 container-fluid h-100">
-                {% if messages %}
-                <ul class="messages">
-                    {% for msg in messages %}       
-                    <li>
-                        <div class="alert alert-{{msg.level_tag}}" role="alert">
-                        {{msg.message}}
-                        </div>
-                    </li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-                <form autocomplete="off" action="{% url 'index' %}" method="POST" class="form-group">
-                  {% csrf_token %}
-                  {{ form }}
-                  <button type="submit" class="btn btn-secondary button">Agregar Paciente</button>
-              </form>
+<!-- Body -->
+    <div class="col-10 col-md-10 container-fluid h-100">
+      {% if messages %}
+      <ul class="messages">
+          {% for msg in messages %}       
+          <li>
+              <div class="alert alert-{{msg.level_tag}}" role="alert">
+              {{msg.message}}
               </div>
-          </div>
-        </div>
-  </body>
-</html>
+          </li>
+          {% endfor %}
+      </ul>
+      {% endif %}
+      <form autocomplete="off" action="{% url 'index' %}" method="POST" class="form-group">
+          {% csrf_token %}
+          {{ form }}
+          <button type="submit" class="btn btn-secondary button">Agregar Paciente</button>
+      </form>
+    </div>
+
+{% endblock %}

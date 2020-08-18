@@ -5,6 +5,24 @@ html{
     }
 }
 
+div{
+    div{
+        aside{
+            nav{
+                div{
+                    ul{
+                        .name{
+                            font-weight: 500;
+                            font-size: large;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
 div {
     div {
         ul {
@@ -18,10 +36,11 @@ div {
                 width: 50%;
             }
             button {
-                margin-top: 10px;
+                margin-top: 5px;
             }
             .select {
-                width: 20%;
+                width: 10%;
+                margin-top: 5px;
             }
         }
     }

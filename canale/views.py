@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.forms import ModelForm, Textarea, TextInput, NumberInput, DateInput, Select
-from .models import Paciente, ObrasSociales
+from .models import Paciente, ObrasSociales, Practicas
 from django import forms
 from django.contrib import messages
 # Create your views here.
@@ -32,6 +32,16 @@ class PacienteForm(ModelForm):
             'obra_social': 'Seleccionar Obra Social'
         }
 
+class PracticasForm(ModelForm):
+    class Meta:
+        model = Practicas
+        fields = ['tipo', 'estado', 'obra_social']
+        widgets = {
+            'tipo' : TextInput(attrs={'class': 'form-control input'}),
+            'estado' : TextInput(attrs={'class': 'form-control input'}),
+            'obra_social' : Select(attrs={'class': 'custom-select form-control select'}),
+        }
+
 def index(request):
     if request.method == 'POST':
         form = PacienteForm(request.POST)
@@ -52,4 +62,18 @@ def index(request):
         'form': PacienteForm()
     })
             
+def practicas(request):
+    if request.method == 'POST':
+        form = PracticasForm(request.POST)
+        if form.is_valid():
+            practicas = Practicas()
+            practicas.estado = form.cleaned_data["estado"]
+            practicas.obra_social = form.cleaned_data["obra_social"]
+            practicas.save()
+            messages.add_message(request, messages.SUCCESS, 'Practica Added.')
+            return HttpResponseRedirect(reverse("index"))
+    
+    return render (request, "canale/practicas.html", {
+        'form': PracticasForm()
+    })
 
